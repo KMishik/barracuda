@@ -25,11 +25,11 @@ class Connection
 	private function connect()
 	{
 		$config = [
-			'host' => 'localhost',
-			'dbname' => 'test_pdo',
+			'host'     => 'localhost',
+			'dbname'   => 'test_pdo',
 			'username' => 'academia',
 			'password' => 'cn1070039',
-			'charset' => 'utf8'
+			'charset'  => 'utf8'
 		];
 
 		$dsn = 'mysql:host=' . $config['host'] . ';dbname=' . $config['dbname'] . ';charset=' . $config['charset'];
