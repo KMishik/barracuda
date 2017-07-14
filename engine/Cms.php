@@ -24,9 +24,6 @@ class Cms
 	 */
 	public function	run()
 	{
-		echo "Привет BaRRaCuDa CMS! <br \>";
-
-		$dep = $this->di->get('test');
-		print_r($dep);
+		print_r($this->di);
 	}
 }
