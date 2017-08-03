@@ -13,6 +13,10 @@ namespace Engine\Core\Router;
  * Class UrlDispatcher
  * @package Engine\Core\Router
  */
+/**
+ * Class UrlDispatcher
+ * @package Engine\Core\Router
+ */
 class UrlDispatcher
 {
 	/**
@@ -64,14 +68,64 @@ class UrlDispatcher
 
 			if (preg_match($pattern, $uri, $parameters))
 			{
-				return new DispatchedRoute($controller, $parameters);
+				return new DispatchedRoute($controller, $this->clearParameters($parameters));
 			}
 		}
 	}
 
+	/**
+	 * @param $pattern
+	 *
+	 * @return mixed
+	 */
+	private function convertPattern($pattern)
+	{
+		if (strpos($pattern, '(') === false)
+		{
+			return $pattern;
+		}
+
+		return preg_replace_callback('#\((\w+):(\w+)\)#',[$this, 'replacePattern'],$pattern);
+	}
+
+	/**
+	 * @param array $matches
+	 *
+	 * @return string
+	 */
+	private function replacePattern(array $matches)
+	{
+		$toret = '(?<' . $matches[1] . '>' . strtr($matches[2], $this->patterns) . ')';
+		return $toret;
+	}
+
+	/**
+	 * @param array $parameters
+	 *
+	 * @return array
+	 */
+	private function clearParameters(array $parameters) : array
+	{
+		foreach ($parameters as $key => $value)
+		{
+			if (is_int($key))
+			{
+				unset($parameters[$key]);
+			}
+		}
+
+		return $parameters;
+	}
+
+	/**
+	 * @param $method
+	 * @param $pattern
+	 * @param $controller
+	 */
 	public function register($method, $pattern, $controller)
 	{
-		$this->routes[strtoupper($method)][$pattern] = $controller;
+		$convert = $this->convertPattern($pattern);
+		$this->routes[strtoupper($method)][$convert] = $controller;
 	}
 
 	/**
