@@ -1,9 +1,9 @@
 <?php
 
-namespace Engine\Service\Database;
+namespace Engine\Service\View;
 
 use Engine\Service\AbstractProvider;
-use Engine\Core\Database\Connection;
+use Engine\Core\View\View;
 
 class Provider extends AbstractProvider
 {
@@ -11,14 +11,14 @@ class Provider extends AbstractProvider
 	/**
 	 * @var string
 	 */
-	public $serviceName = 'db';
+	public $serviceName = 'view';
 
 	/**
 	 * @return mixed
 	 */
 	public function init()
 	{
-		$db = new Connection();
-		$this->di->set($this->serviceName, $db);
+		$view = new View();
+		$this->di->set($this->serviceName, $view);
 	}
 }

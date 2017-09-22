@@ -1,0 +1,2 @@
+Home Page Template <?=$name?> ! ;)
+

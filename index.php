@@ -6,4 +6,6 @@
  * Time: 13:06
  */
 
+define ('ROOT_DIR', __DIR__);
+
 require_once 'engine/bootstrap.php';
