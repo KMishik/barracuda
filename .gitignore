@@ -2,3 +2,5 @@
 /.idea/
 
 /vendor/
+/content/themes/twig/cache/*
+!/content/themes/twig/cache/
