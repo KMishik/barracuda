@@ -7,12 +7,12 @@ use Engine\DI\DI;
 
 try
 {
-	// Dependency injection
+	// Dependency injection class instance.
 	$di = new DI();
 
 	$services = require __DIR__ . '/Config/Service.php';
 
-	// Init services
+	// Init services and add them into DI container.
 	foreach ($services as $service)
 	{
 		$provider = new $service($di);
@@ -22,7 +22,7 @@ try
 	$cms = new Cms($di);
 	$cms->run();
 
-}catch(\ErrorException $e)
+} catch(\ErrorException $e)
 {
 	echo $e->getMessage();
 }

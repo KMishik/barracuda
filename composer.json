@@ -1,17 +1,19 @@
 {
-    "name": "misha/barracuda.cms",
-    "authors": [
-        {
-            "name": "KMishik",
-            "email": "k.mishik@gmail.com"
-        }
-    ],
-    "require": {},
-    "autoload": {
-        "psr-4": {
-            "Engine\\": "engine",
-            "Engine\\DI\\": "engine/DI",
-            "Cms\\": "cms"
-        }
+  "name": "misha/barracuda.cms",
+  "authors": [
+    {
+      "name": "KMishik",
+      "email": "k.mishik@gmail.com"
     }
+  ],
+  "require": {},
+  "autoload":
+  {
+    "psr-4":
+    {
+      "Engine\\": "engine",
+      "Engine\\DI\\": "engine/DI",
+      "Cms\\": "cms"
+    }
+  }
 }
